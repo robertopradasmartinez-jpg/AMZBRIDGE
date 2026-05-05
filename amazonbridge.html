@@ -99,6 +99,13 @@
       color: var(--white);
       background: linear-gradient(135deg, var(--navy), var(--blue));
       box-shadow: 0 12px 28px rgba(13, 27, 47, 0.18);
+      overflow: hidden;
+    }
+
+    .brand-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .nav-links {
@@ -802,7 +809,7 @@
   <header class="topbar">
     <div class="container nav">
       <a class="brand" href="#inicio" aria-label="AmazonBridge inicio">
-        <span class="brand-mark">AB</span>
+        <span class="brand-mark"><img class="brand-photo" src="ChatGPT%20Image%205%20may%202026%2C%2019_34_32.png" alt="" /></span>
         <span>AmazonBridge</span>
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
