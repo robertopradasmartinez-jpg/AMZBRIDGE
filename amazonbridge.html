@@ -495,6 +495,55 @@
       box-shadow: var(--shadow);
     }
 
+    .pricing-dropdown {
+      border: 1px solid var(--gray);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .pricing-dropdown summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      color: var(--navy);
+      cursor: pointer;
+      font-weight: 900;
+      list-style: none;
+    }
+
+    .pricing-dropdown summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .pricing-dropdown summary::after {
+      content: "+";
+      display: grid;
+      place-items: center;
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      color: var(--navy);
+      background: #ffe6b8;
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .pricing-dropdown[open] summary::after {
+      content: "-";
+    }
+
+    .pricing-dropdown .pricing-wrap {
+      border: 0;
+      border-top: 1px solid var(--gray);
+      border-radius: 0;
+      box-shadow: none;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -948,41 +997,44 @@
           <h2>Tabla para venta gestionada de productos</h2>
           <p class="lead">Precios descendentes según volumen. El precio se aplica igual tanto para productos simples como para productos con variantes.</p>
         </div>
-        <div class="pricing-wrap" aria-label="Tabla de precios de venta gestionada de productos">
-          <table>
-            <thead>
-              <tr>
-                <th>Número de productos</th>
-                <th>Precio</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>1 a 3 productos</td><td>250 €</td></tr>
-              <tr><td>4 productos</td><td>320 €</td></tr>
-              <tr><td>5 productos</td><td>390 €</td></tr>
-              <tr><td>6 productos</td><td>450 €</td></tr>
-              <tr><td>7 productos</td><td>510 €</td></tr>
-              <tr><td>8 productos</td><td>560 €</td></tr>
-              <tr><td>9 productos</td><td>610 €</td></tr>
-              <tr><td>10 productos</td><td>650 €</td></tr>
-              <tr><td>11 productos</td><td>700 €</td></tr>
-              <tr><td>12 productos</td><td>750 €</td></tr>
-              <tr><td>13 productos</td><td>790 €</td></tr>
-              <tr><td>14 productos</td><td>830 €</td></tr>
-              <tr><td>15 productos</td><td>870 €</td></tr>
-              <tr><td>16 productos</td><td>910 €</td></tr>
-              <tr><td>17 productos</td><td>950 €</td></tr>
-              <tr><td>18 productos</td><td>990 €</td></tr>
-              <tr><td>19 productos</td><td>1.030 €</td></tr>
-              <tr><td>20 productos</td><td>1.070 €</td></tr>
-              <tr><td>21 a 25 productos</td><td>1.250 €</td></tr>
-              <tr><td>26 a 30 productos</td><td>1.440 €</td></tr>
-              <tr><td>31 a 40 productos</td><td>1.800 €</td></tr>
-              <tr><td>41 a 50 productos</td><td>2.100 €</td></tr>
-              <tr><td>Más de 50 productos</td><td>Presupuesto personalizado</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <details class="pricing-dropdown">
+          <summary>Ver tabla de precios por volumen</summary>
+          <div class="pricing-wrap" aria-label="Tabla de precios de venta gestionada de productos">
+            <table>
+              <thead>
+                <tr>
+                  <th>Número de productos</th>
+                  <th>Precio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1 a 3 productos</td><td>250 €</td></tr>
+                <tr><td>4 productos</td><td>320 €</td></tr>
+                <tr><td>5 productos</td><td>390 €</td></tr>
+                <tr><td>6 productos</td><td>450 €</td></tr>
+                <tr><td>7 productos</td><td>510 €</td></tr>
+                <tr><td>8 productos</td><td>560 €</td></tr>
+                <tr><td>9 productos</td><td>610 €</td></tr>
+                <tr><td>10 productos</td><td>650 €</td></tr>
+                <tr><td>11 productos</td><td>700 €</td></tr>
+                <tr><td>12 productos</td><td>750 €</td></tr>
+                <tr><td>13 productos</td><td>790 €</td></tr>
+                <tr><td>14 productos</td><td>830 €</td></tr>
+                <tr><td>15 productos</td><td>870 €</td></tr>
+                <tr><td>16 productos</td><td>910 €</td></tr>
+                <tr><td>17 productos</td><td>950 €</td></tr>
+                <tr><td>18 productos</td><td>990 €</td></tr>
+                <tr><td>19 productos</td><td>1.030 €</td></tr>
+                <tr><td>20 productos</td><td>1.070 €</td></tr>
+                <tr><td>21 a 25 productos</td><td>1.250 €</td></tr>
+                <tr><td>26 a 30 productos</td><td>1.440 €</td></tr>
+                <tr><td>31 a 40 productos</td><td>1.800 €</td></tr>
+                <tr><td>41 a 50 productos</td><td>2.100 €</td></tr>
+                <tr><td>Más de 50 productos</td><td>Presupuesto personalizado</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
         <div class="note">El precio inicial es de 250 € hasta 3 productos, tanto simples como con variantes. Además, AmazonBridge aplica una comisión del 5 % sobre el resultado neto liquidable, calculado después de descontar comisiones de Amazon, logística/envíos, publicidad pactada, devoluciones, reembolsos, cancelaciones, IVA, ajustes de Amazon y la propia comisión AmazonBridge.</div>
       </div>
     </section>
