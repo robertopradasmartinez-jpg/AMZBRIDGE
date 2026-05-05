@@ -239,6 +239,37 @@
       color: var(--text);
     }
 
+    .profile-block {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--gray);
+    }
+
+    .profile-photo {
+      width: 86px;
+      height: 86px;
+      flex: 0 0 86px;
+      border: 4px solid var(--white);
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 14px 30px rgba(13, 27, 47, 0.18);
+    }
+
+    .profile-name {
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 1.12rem;
+    }
+
+    .profile-role {
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 0.95rem;
+    }
+
     .hero-card h2 {
       font-size: 1.7rem;
       margin-bottom: 14px;
@@ -732,6 +763,16 @@
         padding: 20px;
       }
 
+      .profile-block {
+        align-items: flex-start;
+      }
+
+      .profile-photo {
+        width: 72px;
+        height: 72px;
+        flex-basis: 72px;
+      }
+
       .field.full {
         grid-column: auto;
       }
@@ -776,6 +817,13 @@
           </div>
         </div>
         <aside class="hero-card" aria-label="Resumen del servicio">
+          <div class="profile-block">
+            <img class="profile-photo" src="ChatGPT%20Image%205%20may%202026%2C%2019_34_32.png" alt="Foto de perfil de AmazonBridge" />
+            <div>
+              <div class="profile-name">AmazonBridge</div>
+              <div class="profile-role">Acompañamiento práctico para vender en Amazon</div>
+            </div>
+          </div>
           <h2>Un modelo flexible según tu punto de partida</h2>
           <p>Si quieres validar Amazon sin crear una cuenta Seller propia desde el inicio, AmazonBridge puede publicar, optimizar y vender tus productos desde su cuenta. Si prefieres gestionar tu propia cuenta, te acompaño paso a paso.</p>
           <ul>
@@ -995,8 +1043,11 @@
           <h2>Solicita una valoración inicial</h2>
           <p class="lead">Cuéntame qué productos vendes, qué stock tienes disponible y si prefieres venta gestionada desde AmazonBridge o acompañamiento para crear tu propia cuenta.</p>
         </div>
-        <form class="lead-form" id="leadForm" action="#" method="post">
-          <div class="success-message" id="successMessage">Solicitud preparada. Cuando conectes el formulario, estos datos podrán enviarse a email, WhatsApp, Google Sheets o CRM.</div>
+        <form class="lead-form" id="leadForm" action="https://formsubmit.co/roberto@lavidarosa.es" method="post">
+          <input type="hidden" name="_subject" value="Nueva solicitud desde AmazonBridge" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <div class="success-message" id="successMessage">Solicitud enviada. Te responderé con una primera valoración lo antes posible.</div>
 
           <div class="field">
             <label for="nombre">Nombre y apellidos</label>
@@ -1110,7 +1161,7 @@
       </div>
       <div>
         <strong>Contacto</strong>
-        <p>Email: <a href="mailto:tuemail@amazonbridge.es">tuemail@amazonbridge.es</a></p>
+        <p>Email: <a href="mailto:roberto@lavidarosa.es">roberto@lavidarosa.es</a></p>
         <p>WhatsApp: <a href="tel:+34000000000">+34 000 000 000</a></p>
       </div>
       <div>
@@ -1130,10 +1181,8 @@
       });
     });
 
-    document.getElementById('leadForm').addEventListener('submit', function (event) {
-      event.preventDefault();
+    document.getElementById('leadForm').addEventListener('submit', function () {
       document.getElementById('successMessage').style.display = 'block';
-      document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   </script>
 </body>
