@@ -5,29 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="AmazonBridge ayuda a empresas, marcas y autónomos a vender sus productos desde una cuenta Amazon Seller gestionada o a crear su propia cuenta con acompañamiento práctico." />
   <title>AmazonBridge | El puente entre tu producto y Amazon</title>
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1475318767151953');
-    fbq('track', 'PageView');
-  </script>
-  <!-- End Meta Pixel Code -->
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wo33yry4ry");
-  </script>
-  <!-- End Microsoft Clarity -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Manrope:wght@500;650;750;850&display=swap');
 
@@ -922,6 +899,63 @@
       font-weight: 750;
     }
 
+    .cookie-banner {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 50;
+      display: none;
+      width: min(440px, calc(100% - 44px));
+      padding: 20px;
+      border: 1px solid rgba(234, 216, 191, 0.82);
+      border-radius: 24px;
+      color: var(--cream);
+      background:
+        linear-gradient(135deg, rgba(16, 24, 38, 0.97), rgba(26, 42, 62, 0.96)),
+        var(--navy);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .cookie-banner.is-visible {
+      display: block;
+    }
+
+    .cookie-banner strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--white);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.22rem;
+      line-height: 1.15;
+    }
+
+    .cookie-banner p {
+      margin-bottom: 16px;
+      color: #d7dfeb;
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    .cookie-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .cookie-actions .btn {
+      min-height: 46px;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+    }
+
+    .cookie-actions .btn-secondary {
+      color: var(--cream);
+      border-color: rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: none;
+    }
+
     @media (max-width: 940px) {
       .nav-links a:not(.btn) {
         display: none;
@@ -1023,11 +1057,22 @@
       table {
         min-width: 520px;
       }
+
+      .cookie-banner {
+        right: 12px;
+        bottom: 12px;
+        width: calc(100% - 24px);
+        padding: 18px;
+      }
+
+      .cookie-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1475318767151953&amp;ev=PageView&amp;noscript=1" /></noscript>
   <header class="topbar">
     <div class="container nav">
       <a class="brand" href="#inicio" aria-label="AmazonBridge inicio">
@@ -1417,7 +1462,101 @@
     </div>
   </footer>
 
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <strong>Uso de cookies</strong>
+    <p>Utilizamos cookies para mejorar tu experiencia en la web. Puedes aceptar o rechazar su uso y recordaremos tu elección en este navegador.</p>
+    <div class="cookie-actions">
+      <button class="btn btn-secondary" type="button" id="rejectCookies">Rechazar</button>
+      <button class="btn btn-primary" type="button" id="acceptCookies">Aceptar cookies</button>
+    </div>
+  </div>
+
   <script>
+    var cookieConsentKey = 'amazonbridge_cookie_consent';
+
+    function hasCookieConsent() {
+      try {
+        return window.localStorage.getItem(cookieConsentKey) === 'accepted';
+      } catch (error) {
+        return false;
+      }
+    }
+
+    function hasCookieChoice() {
+      try {
+        var consent = window.localStorage.getItem(cookieConsentKey);
+        return consent === 'accepted' || consent === 'rejected';
+      } catch (error) {
+        return false;
+      }
+    }
+
+    function saveCookieConsent(value) {
+      try {
+        window.localStorage.setItem(cookieConsentKey, value);
+      } catch (error) {
+        return false;
+      }
+      return true;
+    }
+
+    function loadMetaPixel() {
+      if (window.fbq) return;
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1475318767151953');
+      fbq('track', 'PageView');
+    }
+
+    function loadMicrosoftClarity() {
+      if (window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wo33yry4ry");
+    }
+
+    function loadTrackingScripts() {
+      loadMetaPixel();
+      loadMicrosoftClarity();
+    }
+
+    var cookieBanner = document.getElementById('cookieBanner');
+    var acceptCookies = document.getElementById('acceptCookies');
+    var rejectCookies = document.getElementById('rejectCookies');
+
+    if (hasCookieConsent()) {
+      loadTrackingScripts();
+    } else if (!hasCookieChoice() && cookieBanner) {
+      cookieBanner.classList.add('is-visible');
+    }
+
+    if (acceptCookies) {
+      acceptCookies.addEventListener('click', function () {
+        saveCookieConsent('accepted');
+        loadTrackingScripts();
+        if (cookieBanner) {
+          cookieBanner.classList.remove('is-visible');
+        }
+      });
+    }
+
+    if (rejectCookies) {
+      rejectCookies.addEventListener('click', function () {
+        saveCookieConsent('rejected');
+        if (cookieBanner) {
+          cookieBanner.classList.remove('is-visible');
+        }
+      });
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
       link.addEventListener('click', function (event) {
         var target = document.querySelector(link.getAttribute('href'));
