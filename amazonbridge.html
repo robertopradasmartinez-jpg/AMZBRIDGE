@@ -14,6 +14,30 @@
 
     gtag('config', 'AW-18144283055');
   </script>
+  <!-- Event snippet for Contacto conversion page -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof url === 'function') {
+          url();
+        } else if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+
+      if (typeof gtag !== 'function') {
+        callback();
+        return false;
+      }
+
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18144283055/WcjNCKXX5KscEK-T78tD',
+          'event_callback': callback,
+          'event_timeout': 2000
+      });
+      return false;
+    }
+  </script>
   <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s)
@@ -1436,8 +1460,17 @@
       });
     });
 
-    document.getElementById('leadForm').addEventListener('submit', function () {
+    document.getElementById('leadForm').addEventListener('submit', function (event) {
+      var form = this;
+
+      if (form.dataset.conversionSubmitted === 'true') return;
+
+      event.preventDefault();
       document.getElementById('successMessage').style.display = 'block';
+      gtag_report_conversion(function () {
+        form.dataset.conversionSubmitted = 'true';
+        form.submit();
+      });
     });
   </script>
 </body>
