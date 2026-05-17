@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AmazonBridge ayuda a empresas, marcas y autónomos a vender sus productos desde una cuenta Amazon Seller gestionada o a crear su propia cuenta con acompañamiento práctico." />
+  <meta name="description" content="AmazonBridge ayuda a empresas, marcas y autónomos a vender en Amazon con revisión previa, venta gestionada, liquidaciones claras y acompañamiento práctico en Seller Central." />
   <title>AmazonBridge | El puente entre tu producto y Amazon</title>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18144283055"></script>
@@ -777,6 +777,101 @@
       color: var(--navy);
     }
 
+    .proof-band {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .proof-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .proof-list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 20px;
+      border: 1px solid rgba(232, 220, 203, 0.86);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 14px 34px rgba(33, 24, 12, 0.055);
+    }
+
+    .proof-list li::before {
+      content: "OK";
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      color: #1a1206;
+      background: linear-gradient(135deg, #ffe1a0, var(--accent));
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+    }
+
+    .proof-list strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .proof-list span {
+      color: var(--muted);
+    }
+
+    .trust-ledger {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .ledger-item {
+      padding: 22px;
+      border-radius: 24px;
+      color: #eaf2fb;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03)),
+        var(--navy);
+      box-shadow: 0 18px 44px rgba(13, 27, 47, 0.18);
+    }
+
+    .ledger-item strong {
+      display: block;
+      color: #ffe1a0;
+      margin-bottom: 5px;
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.3rem;
+      letter-spacing: -0.04em;
+    }
+
+    .assurance-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .assurance-item {
+      padding: 20px;
+      border: 1px solid rgba(255, 226, 160, 0.22);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.075);
+      color: #d7e2ef;
+    }
+
+    .assurance-item strong {
+      display: block;
+      color: var(--white);
+      margin-bottom: 5px;
+    }
+
     .process-step {
       position: relative;
       padding-top: 74px;
@@ -960,7 +1055,7 @@
         display: none;
       }
 
-      .hero-grid, .solution-panel, .grid-2 {
+      .hero-grid, .solution-panel, .grid-2, .proof-band {
         grid-template-columns: 1fr;
       }
 
@@ -972,7 +1067,7 @@
         right: 18px;
       }
 
-      .grid-3, .grid-4 {
+      .grid-3, .grid-4, .assurance-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1030,7 +1125,7 @@
         width: 100%;
       }
 
-      .grid-3, .grid-4 {
+      .grid-3, .grid-4, .assurance-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1068,6 +1163,7 @@
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#servicios">Servicios</a>
+        <a href="#confianza">Confianza</a>
         <a href="#precios">Precios</a>
         <a href="#proceso">Proceso</a>
         <a href="#contacto" class="btn btn-primary">Solicitar valoración gratuita</a>
@@ -1087,9 +1183,9 @@
             <a class="btn btn-secondary" href="#servicios">Ver servicios</a>
           </div>
           <div class="trust-row" aria-label="Puntos de confianza">
-            <div class="trust-item">Venta gestionada por nosotros</div>
-            <div class="trust-item">Acompañamiento práctico para tu cuenta Seller</div>
-            <div class="trust-item">Transparencia en costes, liquidaciones y límites</div>
+            <div class="trust-item">Revisión previa antes de aceptar productos</div>
+            <div class="trust-item">Liquidaciones y costes explicados por escrito</div>
+            <div class="trust-item">Acompañamiento práctico y comunicación clara</div>
           </div>
         </div>
         <aside class="hero-card" aria-label="Resumen del servicio">
@@ -1163,6 +1259,31 @@
       </div>
     </section>
 
+    <section id="confianza" class="section-soft">
+      <div class="container proof-band">
+        <div>
+          <div class="section-head">
+            <p class="section-kicker">Confianza y seguridad</p>
+            <h2>Antes de vender, dejamos claro qué se puede hacer y qué no</h2>
+            <p class="lead">La confianza se construye revisando bien el producto, explicando los riesgos y documentando costes, decisiones y liquidaciones.</p>
+          </div>
+          <ul class="proof-list">
+            <li><span><strong>Filtro previo de viabilidad.</strong> Revisamos categoría, marca, documentación, imágenes, stock, variantes, requisitos y posibles bloqueos antes de publicar.</span></li>
+            <li><span><strong>Costes visibles desde el inicio.</strong> Te explico comisiones de Amazon, logística, IVA, devoluciones, publicidad pactada y comisión AmazonBridge antes de avanzar.</span></li>
+            <li><span><strong>Liquidación entendible.</strong> En venta gestionada, el cálculo al proveedor se presenta con el resultado neto después de descuentos aplicables.</span></li>
+            <li><span><strong>Sin atajos peligrosos.</strong> No se fuerza la publicación de productos dudosos, restringidos o sin documentación suficiente.</span></li>
+            <li><span><strong>Contacto directo.</strong> Tratas con una persona que revisa tu caso y te explica Seller Central en lenguaje claro.</span></li>
+          </ul>
+        </div>
+        <aside class="trust-ledger" aria-label="Compromisos de AmazonBridge">
+          <div class="ledger-item"><strong>Revisión gratuita inicial</strong> Primera valoración para saber si tu caso encaja antes de contratar.</div>
+          <div class="ledger-item"><strong>Trabajo por fases</strong> Primero validación y preparación; después publicación, gestión o acompañamiento.</div>
+          <div class="ledger-item"><strong>Responsabilidades claras</strong> Producto, stock, documentación, costes y límites quedan explicados antes de operar.</div>
+          <div class="ledger-item"><strong>Comunicación clara</strong> Revisamos cada caso con criterios prácticos y pasos definidos antes de avanzar.</div>
+        </aside>
+      </div>
+    </section>
+
     <section id="servicios" class="section-soft">
       <div class="container">
         <div class="section-head">
@@ -1196,7 +1317,7 @@
               <li>Diferencias entre FBA y FBM, logística, comisiones, pagos y primeros pasos.</li>
               <li>Ayuda para evitar errores habituales e interpretar las primeras incidencias o avisos.</li>
             </ul>
-            <div class="note">Amazon puede solicitar verificaciones, documentación o revisiones externas al servicio. No se garantiza aprobación de cuenta, aprobación de productos ni resultados concretos de ventas.</div>
+            <div class="note">Amazon puede solicitar verificaciones, documentación o revisiones externas al servicio. Te acompaño para preparar la cuenta y entender los pasos necesarios con claridad.</div>
           </article>
         </div>
       </div>
@@ -1291,6 +1412,22 @@
       </div>
     </section>
 
+    <section id="garantias" class="form-section">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Garantías de trabajo</p>
+          <h2>Seguridad significa método y comunicación clara</h2>
+          <p class="lead">Amazon cambia, revisa cuentas y puede bloquear productos o categorías. Por eso el servicio se apoya en prevención, documentación y comunicación clara.</p>
+        </div>
+        <div class="assurance-grid">
+          <div class="assurance-item"><strong>No aceptamos cualquier producto</strong> Si vemos restricciones, margen débil o falta de documentación, lo decimos antes de publicar.</div>
+          <div class="assurance-item"><strong>Decisiones justificadas</strong> Cada paso importante se explica: categoría, logística, variantes, costes y publicación.</div>
+          <div class="assurance-item"><strong>Sin dependencia innecesaria</strong> Si eliges cuenta propia, el objetivo es que entiendas el proceso y ganes autonomía.</div>
+          <div class="assurance-item"><strong>Expectativas realistas</strong> Trabajamos con criterios claros, revisión previa y comunicación prudente en cada fase.</div>
+        </div>
+      </div>
+    </section>
+
     <section id="proceso" class="section-soft">
       <div class="container">
         <div class="section-head">
@@ -1311,7 +1448,7 @@
       <div class="container honest">
         <p class="section-kicker">Aviso honesto</p>
         <h2>Transparencia desde el principio</h2>
-        <p>AmazonBridge no está afiliado ni asociado oficialmente con Amazon. El servicio no garantiza ventas, Buy Box, aprobación de cuentas, aprobación de productos, aprobación de categorías ni resultados concretos. En la venta gestionada, Amazon paga a AmazonBridge y AmazonBridge liquida periódicamente al proveedor el resultado neto después de descontar comisiones de Amazon, logística/envíos, publicidad si se ha pactado, devoluciones, reembolsos, cancelaciones, IVA, ajustes de Amazon y la comisión AmazonBridge del 5 %.</p>
+        <p>En la venta gestionada, Amazon paga a AmazonBridge y AmazonBridge liquida periódicamente al proveedor el resultado neto después de descontar comisiones de Amazon, logística/envíos, publicidad si se ha pactado, devoluciones, reembolsos, cancelaciones, IVA, ajustes de Amazon y la comisión AmazonBridge del 5 %.</p>
       </div>
     </section>
 
@@ -1425,7 +1562,7 @@
 
           <div class="form-footer">
             <button class="btn btn-primary" type="submit">Solicitar valoración gratuita</button>
-            <p class="form-note">Te responderé con una primera valoración, sin prometer ventas, Buy Box, aprobaciones ni resultados concretos.</p>
+            <p class="form-note">Tus datos se usan solo para responder a esta solicitud. Te daré una primera valoración clara sobre tus productos y el camino más adecuado.</p>
           </div>
         </form>
       </div>
@@ -1445,7 +1582,7 @@
       </div>
       <div>
         <strong>Aviso</strong>
-        <p>Servicio independiente no afiliado a Amazon.</p>
+        <p>Servicio práctico para vender y gestionar productos en Amazon.</p>
       </div>
     </div>
   </footer>
